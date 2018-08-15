@@ -61,7 +61,8 @@ export default {
 }
 
 h1 {
-  margin-bottom: 1rem
+  margin-bottom: 1rem;
+  font-size: 2.5rem
 }
 
 img {

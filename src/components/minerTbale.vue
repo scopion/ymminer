@@ -32,10 +32,6 @@
     </el-table-column>
     <el-table-column fixed sortable="custom" prop="CardsCount" label="显卡" width="120">
     </el-table-column>
-    <el-table-column fixed prop="OfflineTime" label="离线时间戳" width="150">
-    </el-table-column>
-    <el-table-column fixed prop="nowTime" label="当前时间戳" width="150">
-    </el-table-column>
     <el-table-column prop="IPAddress" label="IP地址" width="150">
     </el-table-column>
     <el-table-column  prop="RunningTime" label="运行时间" width="150" :formatter="time">
@@ -99,8 +95,8 @@ import Global_ from './Global'
 export default {
   data() {
     return {
-      // baseUrl: './public/index.php',
-      baseUrl: '../../static/data.json',
+      baseUrl: './public/index.php',
+      // baseUrl: '../../static/data.json',
       tableData: [],
       faildTableData: [],
       multipleSelection: [], //多选框的值
@@ -236,7 +232,7 @@ export default {
     },
     timeNew(row, column, cellValue, index){
       var num = Math.abs(parseInt(Date.parse(new Date())/1000) - cellValue); //时间戳为10位需*1000，时间戳为13位的话不需乘1000
-      if (cellValue == '') {
+      if (cellValue == '' || num<=300 ) {
         num = 0;
       }
       if(num<=86400){

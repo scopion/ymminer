@@ -117,7 +117,8 @@ export default {
       minerTotal: Global_.minerTotal,
       onlineMiner: [],
       offlineMiner: [],
-      radio: '3'
+      radio: '3',
+      keySort:'',
     }
   },
   methods: {
@@ -290,8 +291,33 @@ export default {
         this.getData()
       }
     },
-    sortChange(val){
-      console.log(val)
+    sortChange(val){//排序
+      let that = this
+      that.keySort = val.prop
+      let keyS = that.keySort
+      function up(x,y){
+            return x[val.prop] - y[val.prop]
+      }
+      function down(x,y){
+            return y[val.prop] - x[val.prop]
+      }
+      if(val.order=="ascending"){//升序
+          let newableData = []
+          that.tableData.sort(up).forEach((item) => {
+            console.log(item[keyS])
+            newableData.push(item)
+          })
+          that.tableData = newableData
+          console.log(that.tableData)
+      }else{
+        let newableData = []
+        that.tableData.sort(down).forEach((item) => {
+          console.log(item[keyS])
+          newableData.push(item)
+        })
+        that.tableData = newableData
+        console.log(that.tableData)
+      }
     },
     filterTag(value, row) {
       return row.Online === value;

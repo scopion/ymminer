@@ -295,10 +295,10 @@ export default {
       let that = this
       that.keySort = val.prop
       let keyS = that.keySort
-      function up(x,y){
+      function up(x,y){//升序
             return x[val.prop] - y[val.prop]
       }
-      function down(x,y){
+      function down(x,y){//降序
             return y[val.prop] - x[val.prop]
       }
       if(val.order=="ascending"){//升序
